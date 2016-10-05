@@ -23,9 +23,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-        angular.module("photoApp", [])
-            .directive('change', function () {
-            i = 0;
+        angular.module("photoApp", []).directive('change', function () {
+            var i = 0;
             var srcPhoto = new Array()
             srcPhoto[0] = new Image()
             srcPhoto[1] = new Image()
@@ -42,7 +41,7 @@
                         $('body').append('<input type="button" value="Next" class="next">')
                         $('.next').click(function () {
                             i++
-                            //                     alert(i);
+//                            console.log(i);
                             $('.container').append(srcPhoto[i]);
                             if (i == srcPhoto.length - 1) {
                                 i = 0 - 1;
