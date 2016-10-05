@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+</head>
+    <body ng-app="productApp">
+       
+        <product-table></product-table>
+       
+       
+        
+    
+    <script>
+        var product = [
+            {
+                title: 'product1',
+                description: 'about product 1',
+                price: '100$'
+
+            },
+
+            {
+                title: 'product2',
+                description: 'about product 2',
+                price: '200$'
+
+            },
+
+            {
+                title: 'product3',
+                description: 'about product 3',
+                price: '400$'
+
+            },
+            {
+                title: 'product4',
+                description: 'about product 4',
+                price: '500$'
+
+            },
+            {
+                title: 'product5',
+                description: 'about product 5',
+                price: '600$'
+
+            },
+            {
+                title: 'product6',
+                description: 'about product 6',
+                price: '700$'
+
+            },
+            
+        ];
+        angular.module('productApp',[])
+        
+        .directive('productTable', function(){
+            
+        
+            return {
+                template:'<table class="table table-bordered"><thead><tr><th>Product Name</th><th>Description</th><th>Price $</th></tr></thead><tbody><tr ng-repeat="product in myProduct"><td>{{product.title}}</td><td>{{product.description}}</td><td>{{product.price}}</td></tr></tbody></table>',
+
+                link: function(scope, element, attrs){
+                    console.log('table product');
+                    scope.myProduct = product;
+                }
+            }
+            
+        
+        })
+            
+        
+        
+    </script>
+</body>
+</html>
