@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 480px;
+            height: 320px;
+            overflow: hidden;
+        }
+        
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body ng-app="photoApp">
+    <h3 change>Click</h3>
+    <div class="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        angular.module("photoApp", [])
+            .directive('change', function () {
+            i = 0;
+            var srcPhoto = new Array()
+            srcPhoto[0] = new Image()
+            srcPhoto[1] = new Image()
+            srcPhoto[2] = new Image()
+            srcPhoto[3] = new Image()
+            srcPhoto[0].src = "https://i.vsco.co/544ec9135a6808e07f8b4567?w=360"
+            srcPhoto[1].src = "http://image.vsco.co/1/4f7b4abb65a241/51e07796586808834500002a/480x320/jobs01_polaroid690cold_centered.jpg"
+            srcPhoto[2].src = "https://i.vsco.co/544ec91359680872228b4567?w=360"
+            srcPhoto[3].src = "https://i.vsco.co/544ec913586808ec7d8b4567?w=360"
+            return {
+                link: function (scope, element, attrs) {
+                    element.on('click', function () {
+                        $('.container').append(srcPhoto[0]);
+                        $('body').append('<input type="button" value="Next" class="next">')
+                        $('.next').click(function () {
+                            i++
+                            //                     alert(i);
+                            $('.container').append(srcPhoto[i]);
+                            if (i == srcPhoto.length - 1) {
+                                i = 0 - 1;
+                            }
+                        })
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
